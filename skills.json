@@ -1,0 +1,14 @@
+[
+  { "name": "Angular", "icon": "SiAngular" },
+  { "name": "Vue 2/3", "icon": "SiVuedotjs" },
+  { "name": "React", "icon": "SiReact" },
+  { "name": "Tailwind CSS", "icon": "SiTailwindcss" },
+  { "name": "NextJS", "icon": "SiNextdotjs" },
+  { "name": ".NET Core", "icon": "SiDotnet" },
+  { "name": "NestJS", "icon": "SiNestjs" },
+  { "name": "Node.js", "icon": "SiNodedotjs" },
+  { "name": "MongoDB", "icon": "SiMongodb" },
+  { "name": "PostgreSQL", "icon": "SiPostgresql" },
+  { "name": "Azure", "icon": "VscAzure" },
+  { "name": "Python", "icon": "SiPython" }
+]

@@ -1,0 +1,14 @@
+{
+  "name": "Yash Patel",
+  "siteTitle": "Yash Patel — Software Engineer",
+  "siteDescription": "Building performant, scalable, and elegant web applications.",
+  "photo": "images/profile.jpg",
+  "resume": "files/Yash-Patel-CV.pdf",
+  "headline": "Full-Stack Developer with hands-on experience building offline-first PWAs and high-performance web applications",
+  "headlineHighlight": "offline-first PWAs",
+  "intro": "I build production-ready web apps with a strong frontend focus, designed to work reliably under real-world constraints like offline sync and large datasets.",
+  "proof": "Proven in production: Vue 2 → Vue 3 migration (~50% faster loads) and offline-first PWA with 100% data integrity.",
+  "about": "Full Stack Software Engineer specializing in scalable web applications and modernization. I build offline-first systems using Vue.js (2 & 3) and .NET Core, with a focus on performance optimization and complex architectural migrations. Currently engineering enterprise solutions at TatvaSoft.",
+  "email": "yashpatel11072025@gmail.com",
+  "linkedin": "https://www.linkedin.com/in/yashkumar-b-patel"
+}

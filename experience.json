@@ -1,0 +1,35 @@
+[
+  {
+    "role": "Software Engineer",
+    "company": "TatvaSoft",
+    "location": "Ahmedabad",
+    "period": "Jan 2024 — Present",
+    "companyUrl": "https://www.tatvasoft.com",
+    "description": "Specializing in modernizing legacy architectures and building offline-first enterprise solutions.",
+    "projects": [
+      {
+        "name": "Farm Management Suite (FMS)",
+        "role": "Frontend Developer",
+        "description": "An offline-first PWA ecosystem managing the entire agricultural lifecycle from harvest to packhouse logistics.",
+        "techStack": ["Vue 3", "Pinia", "IndexedDB"],
+        "challenge": "Connectivity in remote farmlands is unstable. The client needed zero data loss during harvest logging, even when devices were offline for hours.",
+        "highlights": [
+          "Harvest Module: Architected the field operations tool using Vue 3 and IndexedDB. Implemented an 'Outbox' pattern to queue requests during connectivity loss, ensuring 100% data integrity upon sync.",
+          "Packing Module: Streamlined logistics from receival to dispatch. Optimized pallet workflows and integrated real-time QA reporting.",
+          "Central Admin (Migration): Spearheaded the complete migration of the legacy admin dashboard from Vue 2 to Vue 3 (Composition API), reducing bundle size and improving load times by 50%."
+        ]
+      },
+      {
+        "name": "Recruitment Management System",
+        "role": "Full Stack Developer",
+        "description": "A comprehensive automated hiring platform replacing manual Excel-based tracking.",
+        "techStack": ["Angular", ".NET Core", "Azure Functions", "Blob Storage"],
+        "challenge": "The HR team was spending 15+ hours weekly manually parsing emails and organizing resume files.",
+        "highlights": [
+          "Engineered Azure Functions to automatically trigger on email receipt, parsing attachments and populating the database, reducing manual HR effort by 80%.",
+          "Built a Resume Parsing module that categorizes candidates based on skill keywords automatically."
+        ]
+      }
+    ]
+  }
+]

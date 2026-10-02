@@ -1,0 +1,87 @@
+[
+  {
+    "title": "AI-Powered Personal Knowledge Hub",
+    "role": "Personal Project",
+    "summary": "A personal knowledge management system that enables users to store notes, attach files, and perform semantic AI-powered search across their data. The system integrates a custom ingestion pipeline that parses notes, extracts content from files, generates embeddings, and enables Retrieval-Augmented Generation (RAG) for contextual answers. It supports both traditional text search and AI search with references, along with cached note summarization for efficiency.",
+    "desc": [
+      "Built a scalable ingestion pipeline to parse note content, extract text from files (PDF, images, DOCX, etc.), and generate embeddings.",
+      "Implemented semantic search using vector similarity over stored embeddings for accurate context retrieval.",
+      "Designed a RAG-based AI search system that returns grounded answers with source references.",
+      "Added summary generation with caching to reduce repeated LLM calls and optimize token usage.",
+      "Separated architecture into API (orchestration), Search (AI processing), and Storage layers for modularity."
+    ],
+    "stack": ["Next.js", "Nest.js", "Python (FastAPI)", "MongoDB", "RAG (Retrieval-Augmented Generation)"],
+    "links": [
+      { "label": "GitHub", "url": "https://github.com/YashPatel117/apkh", "type": "github" },
+      { "label": "Youtube", "url": "https://youtu.be/Y1p1ga4Ziss?t=190", "type": "youtube" },
+      { "label": "Embed", "url": "https://www.youtube.com/embed/Y1p1ga4Ziss?start=190", "type": "embed" }
+    ]
+  },
+  {
+    "title": "Offline-First Farm Harvest & Pack Management System",
+    "role": "Featured Case Study",
+    "stack": ["Vue 3", "IndexedDB", "PWA"],
+    "caseStudy": [
+      {
+        "title": "Overview",
+        "content": "A production-grade Progressive Web App designed for field operations in environments with unreliable or no internet connectivity."
+      },
+      {
+        "title": "Problem",
+        "content": "Field users frequently operate without stable connectivity, leading to failed API calls, partial submissions, and inconsistent system state in traditional online-only architectures."
+      },
+      {
+        "title": "Constraints",
+        "content": [
+          "Connectivity cannot be guaranteed",
+          "Data loss is unacceptable",
+          "Users must continue working offline",
+          "Sync conflicts must be deterministic"
+        ]
+      },
+      {
+        "title": "Solution",
+        "content": "Designed an offline-first architecture using IndexedDB for durable client-side storage and an outbox pattern to queue write operations. Connectivity listeners trigger background sync, while idempotent backend APIs safely replay queued requests."
+      },
+      {
+        "title": "Key Engineering Highlights",
+        "content": [
+          "IndexedDB-based persistence layer",
+          "Outbox pattern for request replay",
+          "Connectivity-aware background sync",
+          "Strict frontend-backend DTO contracts",
+          "Centralized sync state using store patterns"
+        ]
+      },
+      {
+        "title": "Results & Impact",
+        "content": [
+          "100% data consistency across offline/online transitions",
+          "Improved perceived performance for field users",
+          "Significant reduction in sync-related support issues",
+          "Successfully used in daily production workflows"
+        ]
+      },
+      {
+        "title": "What I'd Improve Next",
+        "content": ["Conflict resolution UI"]
+      }
+    ]
+  },
+  {
+    "title": "CareConnect - Hospital Management System",
+    "role": "Personal Project",
+    "desc": [
+      "Engineered a low-latency chat module using SignalR, supporting 1:1 and group messaging.",
+      "Implemented granular RBAC (Role-Based Access Control) for Admins, Physicians, and Patients using JWT.",
+      "Designed a normalized PostgreSQL schema optimized for complex medical history queries.",
+      "Built end-to-end document handling for secure prescription uploads."
+    ],
+    "summary": "A real-time, secure hospital ecosystem built for scale.",
+    "challenge": "Most hospital systems are fragmented, forcing users to switch between tools. The goal was to engineer a unified ecosystem that seamlessly handles three distinct, conflicting workflows (Admin oversight, Physician diagnostics, and Patient booking) within a single secure interface using JWT authentication.",
+    "stack": [".NET Core MVC", "SignalR", "PostgreSQL"],
+    "links": [
+      { "label": "Live Presentation", "url": "https://prezi.com/view/zhLeGlzGKXmWFiXGSrN3/", "type": "demo" }
+    ]
+  }
+]
