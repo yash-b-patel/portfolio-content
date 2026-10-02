@@ -2,25 +2,57 @@
   {
     "title": "AI-Powered Personal Knowledge Hub",
     "role": "Personal Project",
-    "summary": "A personal knowledge management system that enables users to store notes, attach files, and perform semantic AI-powered search across their data. The system integrates a custom ingestion pipeline that parses notes, extracts content from files, generates embeddings, and enables Retrieval-Augmented Generation (RAG) for contextual answers. It supports both traditional text search and AI search with references, along with cached note summarization for efficiency.",
+    "summary": "A note-taking app with an AI layer: write rich notes with attachments, then ask questions and get answers grounded in your own notes, with numbered citations that jump to the exact passage or PDF page. It works with no AI key at all, through a built-in AI running self-hosted open-source models under Free and Pro plans, and users can plug in their own OpenRouter, Gemini, OpenAI or Claude key for stronger models.",
+    "challenge": "AI answers over personal notes are only useful if people can trust them and afford them. Every answer had to point back to its sources, editing a note shouldn't mean paying to re-embed everything, and the app had to work for users who have no AI key.",
     "desc": [
-      "Built a scalable ingestion pipeline to parse note content, extract text from files (PDF, images, DOCX, etc.), and generate embeddings.",
-      "Implemented semantic search using vector similarity over stored embeddings for accurate context retrieval.",
-      "Designed a RAG-based AI search system that returns grounded answers with source references.",
-      "Added summary generation with caching to reduce repeated LLM calls and optimize token usage.",
-      "Separated architecture into API (orchestration), Search (AI processing), and Storage layers for modularity."
+      "Split the system into four services: Next.js web app, NestJS API (orchestration, search index, background indexing), Express file storage, and a stateless FastAPI + LangChain AI service that extracts, chunks, embeds and generates.",
+      "Built a MongoDB-backed indexing queue with atomic job claims, retry with backoff and stale-lock recovery; content hashes make re-indexing incremental, so an edit re-embeds only the changed passages and attachments are never read twice.",
+      "Implemented hybrid retrieval: Atlas Vector Search plus keyword search, merged with reciprocal rank fusion, with an in-API cosine fallback and automatic query rewriting when the first search is weak.",
+      "Designed RAG answers with numbered citations that open the source note scrolled to the highlighted passage, or the attachment at the cited page; chat searches notes and past conversations together.",
+      "Added a built-in AI that needs no key (Qwen3.5 4B + Qwen3-Embedding via Ollama) with Free/Pro plans: per-session token allowances, a priority queue that puts questions ahead of indexing, and one-time voucher codes for upgrades.",
+      "Supported four AI providers with live model lists, one-click OpenRouter connect (OAuth PKCE) and API keys encrypted at rest; vectors are labelled by embedding model so switching providers rebuilds them from stored text.",
+      "Reads PDFs (including scanned pages and images via vision models) and DOCX; generates brief or action-item summaries (tasks, owners, deadlines, decisions), cached per note; Google sign-in and an installable PWA."
     ],
-    "stack": ["Next.js", "Nest.js", "Python (FastAPI)", "MongoDB", "RAG (Retrieval-Augmented Generation)"],
+    "stack": [
+      "Next.js",
+      "NestJS",
+      "Python (FastAPI)",
+      "LangChain",
+      "MongoDB Atlas Vector Search",
+      "Ollama",
+      "RAG (Retrieval-Augmented Generation)"
+    ],
     "links": [
-      { "label": "GitHub", "url": "https://github.com/YashPatel117/apkh", "type": "github" },
-      { "label": "Youtube", "url": "https://youtu.be/Y1p1ga4Ziss?t=190", "type": "youtube" },
-      { "label": "Embed", "url": "https://www.youtube.com/embed/Y1p1ga4Ziss?start=190", "type": "embed" }
+      {
+        "label": "Live App",
+        "url": "https://apkh-five.vercel.app",
+        "type": "demo"
+      },
+      {
+        "label": "GitHub",
+        "url": "https://github.com/YashPatel117/apkh",
+        "type": "github"
+      },
+      {
+        "label": "Youtube",
+        "url": "https://youtu.be/Y1p1ga4Ziss?t=190",
+        "type": "youtube"
+      },
+      {
+        "label": "Embed",
+        "url": "https://www.youtube.com/embed/Y1p1ga4Ziss?start=190",
+        "type": "embed"
+      }
     ]
   },
   {
     "title": "Offline-First Farm Harvest & Pack Management System",
     "role": "Featured Case Study",
-    "stack": ["Vue 3", "IndexedDB", "PWA"],
+    "stack": [
+      "Vue 3",
+      "IndexedDB",
+      "PWA"
+    ],
     "caseStudy": [
       {
         "title": "Overview",
@@ -64,7 +96,9 @@
       },
       {
         "title": "What I'd Improve Next",
-        "content": ["Conflict resolution UI"]
+        "content": [
+          "Conflict resolution UI"
+        ]
       }
     ]
   },
@@ -79,9 +113,17 @@
     ],
     "summary": "A real-time, secure hospital ecosystem built for scale.",
     "challenge": "Most hospital systems are fragmented, forcing users to switch between tools. The goal was to engineer a unified ecosystem that seamlessly handles three distinct, conflicting workflows (Admin oversight, Physician diagnostics, and Patient booking) within a single secure interface using JWT authentication.",
-    "stack": [".NET Core MVC", "SignalR", "PostgreSQL"],
+    "stack": [
+      ".NET Core MVC",
+      "SignalR",
+      "PostgreSQL"
+    ],
     "links": [
-      { "label": "Live Presentation", "url": "https://prezi.com/view/zhLeGlzGKXmWFiXGSrN3/", "type": "demo" }
+      {
+        "label": "Live Presentation",
+        "url": "https://prezi.com/view/zhLeGlzGKXmWFiXGSrN3/",
+        "type": "demo"
+      }
     ]
   }
 ]
