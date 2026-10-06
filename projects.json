@@ -2,8 +2,8 @@
   {
     "title": "AI-Powered Personal Knowledge Hub",
     "role": "Personal Project",
-    "summary": "A note-taking app with an AI layer: write rich notes with attachments, then ask questions and get answers grounded in your own notes, with numbered citations that jump to the exact passage or PDF page. It works with no AI key at all, through a built-in AI running self-hosted open-source models under Free and Pro plans, and users can plug in their own OpenRouter, Gemini, OpenAI or Claude key for stronger models.",
-    "challenge": "AI answers over personal notes are only useful if people can trust them and afford them. Every answer had to point back to its sources, editing a note shouldn't mean paying to re-embed everything, and the app had to work for users who have no AI key.",
+    "summary": "A note-taking app with an AI layer: write rich notes with attachments, then ask questions and get answers grounded in your own notes, with numbered citations that jump to the exact passage or PDF page, streamed in as they're written. Notes live in nested folders with full version history, export to Markdown, ZIP or PDF, and can be captured from anywhere through a browser web clipper, email-to-note or personal API tokens. It works with no AI key at all, through a built-in AI running self-hosted open-source models under Free and Pro plans, and users can plug in their own OpenRouter, Gemini, OpenAI or Claude key for stronger models.",
+    "challenge": "AI answers over personal notes are only useful if people can trust them and afford them. Every answer had to point back to its sources, editing a note shouldn't mean paying to re-embed everything, and the app had to work for users who have no AI key. As it grew into a daily tool it also had to stay fast with thousands of notes, keep working offline, and let content in from outside the app without opening security holes.",
     "desc": [
       "Split the system into four services: Next.js web app, NestJS API (orchestration, search index, background indexing), Express file storage, and a stateless FastAPI + LangChain AI service that extracts, chunks, embeds and generates.",
       "Built a MongoDB-backed indexing queue with atomic job claims, retry with backoff and stale-lock recovery; content hashes make re-indexing incremental, so an edit re-embeds only the changed passages and attachments are never read twice.",
@@ -11,7 +11,13 @@
       "Designed RAG answers with numbered citations that open the source note scrolled to the highlighted passage, or the attachment at the cited page; chat searches notes and past conversations together.",
       "Added a built-in AI that needs no key (Qwen3.5 4B + Qwen3-Embedding via Ollama) with Free/Pro plans: per-session token allowances, a priority queue that puts questions ahead of indexing, and one-time voucher codes for upgrades.",
       "Supported four AI providers with live model lists, one-click OpenRouter connect (OAuth PKCE) and API keys encrypted at rest; vectors are labelled by embedding model so switching providers rebuilds them from stored text.",
-      "Reads PDFs (including scanned pages and images via vision models) and DOCX; generates brief or action-item summaries (tasks, owners, deadlines, decisions), cached per note; Google sign-in and an installable PWA."
+      "Reads PDFs (including scanned pages and images via vision models) and DOCX; generates brief or action-item summaries (tasks, owners, deadlines, decisions), cached per note; Google sign-in and an installable PWA.",
+      "Streamed AI answers and chat replies over Server-Sent Events, and pushed note and indexing updates live across tabs and devices with Socket.IO.",
+      "Organised notes into nested folders with drag-and-drop and breadcrumbs, kept a version history per note with side-by-side diff and one-click restore, and added Markdown, ZIP, print-to-PDF and calendar (.ics) export of dated action items.",
+      "Opened the app to outside content: a Manifest V3 browser web clipper, email-to-note inboxes and scoped personal API tokens, all landing in the same indexing pipeline.",
+      "Built a usage analytics dashboard (tokens and estimated cost per model) and an admin panel for users, plans and vouchers, behind role-guarded APIs.",
+      "Hardened the services for production: paginated server-side search with infinite scroll, upload size limits and per-user storage quotas, rate limiting, ETags, health/readiness checks, graceful shutdown and structured logs with correlation IDs.",
+      "Made the UI keyboard-first and global: a Ctrl/⌘+K command palette, shortcuts and editor slash commands, an offline banner with background sync, and English, Spanish and Hindi translations."
     ],
     "stack": [
       "Next.js",
@@ -20,6 +26,8 @@
       "LangChain",
       "MongoDB Atlas Vector Search",
       "Ollama",
+      "Socket.IO",
+      "Server-Sent Events",
       "RAG (Retrieval-Augmented Generation)"
     ],
     "links": [
